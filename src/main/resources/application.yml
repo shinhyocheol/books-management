@@ -1,0 +1,47 @@
+## Spring Config
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  ## JPA Config
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    properties:
+      hibernate:
+        format_sql: true
+#    open-in-view: false
+  ## Multipart Config
+  servlet:
+    multipart:
+      enabled: true
+
+## ContextPath Config
+server:
+  servlet:
+    context-path: /api/v1
+
+## Database config
+datasource:
+    jdbc-url: "jdbc:mysql://127.0.0.1:3306/store?serverTimezone=Asia/Seoul&characterEncoding=UTF-8"
+    username: "root"
+    password: "1234"
+## logging
+logging:
+  level:
+    org:
+      type:
+        descriptor:
+          sql: trace
+    com:
+      example:
+        app: debug
