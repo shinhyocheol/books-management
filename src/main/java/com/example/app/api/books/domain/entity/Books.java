@@ -1,5 +1,6 @@
 package com.example.app.api.books.domain.entity;
 
+import com.example.app.api.categories.domain.entity.Categories;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -50,6 +51,14 @@ public class Books {
         this.name = name;
         this.author = author;
         this.category = category;
+    }
+
+    public void modifyCategoryOfBook(Categories category) {
+        this.category = category;
+    }
+
+    public void modifyDisabledOfBook(String disabled) {
+        this.disabled = disabled;
     }
 
 }

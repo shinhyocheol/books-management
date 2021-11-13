@@ -1,4 +1,4 @@
-package com.example.app.api.books.domain.entity;
+package com.example.app.api.categories.domain.entity;
 
 import lombok.AccessLevel;
 import lombok.Builder;
