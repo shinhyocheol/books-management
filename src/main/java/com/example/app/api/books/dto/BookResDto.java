@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BookResDto {
 
-    private Long bookId;
+    private Long id;
 
     private String name;
 

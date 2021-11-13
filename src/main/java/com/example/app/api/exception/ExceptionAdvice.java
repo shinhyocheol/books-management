@@ -29,6 +29,8 @@ public class ExceptionAdvice {
         ErrorResponse response = ErrorResponse.of(ErrorCode.BAD_REQUEST_CODE);
         response.setDetail(e.getMessage());
 
+        e.printStackTrace();
+
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
 
@@ -43,6 +45,8 @@ public class ExceptionAdvice {
         ErrorResponse response = ErrorResponse.of(ErrorCode.NOT_FOUND);
         response.setDetail(e.getMessage());
 
+        e.printStackTrace();
+
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
@@ -54,6 +58,8 @@ public class ExceptionAdvice {
     public ResponseEntity<ErrorResponse> serverErrorException(Exception e) throws Exception {
         ErrorResponse response = ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
         response.setDetail(e.getMessage());
+
+        e.printStackTrace();
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }

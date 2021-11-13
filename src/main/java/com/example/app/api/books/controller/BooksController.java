@@ -1,5 +1,6 @@
 package com.example.app.api.books.controller;
 
+import com.example.app.api.books.domain.entity.Books;
 import com.example.app.api.books.dto.BookRegDto;
 import com.example.app.api.books.dto.BookResDto;
 import com.example.app.api.books.service.BooksService;
@@ -51,10 +52,12 @@ public class BooksController {
      * @throws Exception
      */
     @PostMapping(value = "")
-    public void registBook(
+    public ResponseEntity<BookResDto> registBook(
             @Valid @RequestBody BookRegDto regBook) throws Exception {
 
-        booksService.registBook(regBook);
+        return ResponseEntity
+                .ok()
+                .body(booksService.registBook(regBook));
     }
 
     /**
@@ -64,11 +67,13 @@ public class BooksController {
      * @throws Exception
      */
     @PutMapping(value = "{bookId}/category")
-    public void modifyCategoryOfBook(
+    public ResponseEntity<BookResDto> modifyCategoryOfBook(
             @PathVariable Long bookId,
             @RequestParam(name = "categoryId") Long categoryId) throws Exception {
 
-        booksService.modifyCategoryOfBook(bookId, categoryId);
+        return ResponseEntity
+                .ok()
+                .body(booksService.modifyCategoryOfBook(bookId, categoryId));
     }
 
     /**
@@ -78,11 +83,13 @@ public class BooksController {
      * @throws Exception
      */
     @PutMapping(value = "{bookId}/disabled")
-    public void modifyDisableStatusOfBook(
+    public ResponseEntity<BookResDto> modifyDisableStatusOfBook(
             @PathVariable Long bookId,
             @RequestParam(name = "disabled") String disabled) throws Exception {
 
-        booksService.modifyDisabledStatusOfBook(bookId, disabled);
+        return ResponseEntity
+                .ok()
+                .body(booksService.modifyDisabledStatusOfBook(bookId, disabled));
     }
 
 

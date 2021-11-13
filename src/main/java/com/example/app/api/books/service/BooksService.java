@@ -25,6 +25,7 @@ public class BooksService {
 
     private final ModelMapper modelMapper;
 
+    @Transactional(readOnly = true)
     public List<BookResDto> getBooks() {
 
         List<Books> books = booksRepository.findAll();
@@ -34,6 +35,7 @@ public class BooksService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public BookResDto getBookDetail(Long bookId) {
 
         Books book = booksRepository.findById(bookId)
@@ -43,23 +45,25 @@ public class BooksService {
 
     }
 
-    public void registBook(BookRegDto regBook) {
+    @Transactional
+    public BookResDto registBook(BookRegDto regBook) {
 
         Categories category = categoriesRepository.findById(regBook.getCategoryId())
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID를 가진 카테고리가 존재하지 않습니다."));
 
-        Books book = Books.builder()
+        Books build = Books.builder()
                 .name(regBook.getName())
                 .author(regBook.getAuthor())
                 .category(category)
                 .build();
 
-        booksRepository.save(book);
+        Books book = booksRepository.save(build);
 
+        return modelMapper.map(book, BookResDto.class);
     }
 
     @Transactional
-    public void modifyCategoryOfBook(Long bookId, Long categoryId) {
+    public BookResDto modifyCategoryOfBook(Long bookId, Long categoryId) {
         Books book = booksRepository.findById(bookId)
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID를 가진 도서가 존재하지 않습니다."));
 
@@ -68,15 +72,18 @@ public class BooksService {
 
         book.modifyCategoryOfBook(category);
 
+        return modelMapper.map(book, BookResDto.class);
     }
 
     @Transactional
-    public void modifyDisabledStatusOfBook(Long bookId, String disabled) {
+    public BookResDto modifyDisabledStatusOfBook(Long bookId, String disabled) {
 
         Books book = booksRepository.findById(bookId)
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID를 가진 도서가 존재하지 않습니다."));
 
         book.modifyDisabledOfBook(disabled);
+
+        return modelMapper.map(book, BookResDto.class);
     }
 
 }
