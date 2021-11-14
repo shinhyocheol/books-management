@@ -1,4 +1,4 @@
-package com.example.app.api.exception;
+package com.example.app.util.exception;
 
 import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;

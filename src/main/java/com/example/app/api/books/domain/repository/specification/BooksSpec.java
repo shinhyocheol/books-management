@@ -12,9 +12,11 @@ import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
 public class BooksSpec {
-
+    /**
+     * @설명 : Specification 인터페이스를 통해 검색 조회 시 필요한 검색조건을 빌드함.
+     *      검색조건은 필수가 아닌 선택이므로 null인 경우는 조건에 포함되지 않는다.
+     */
     public static Specification<Books> getPredicateWithKeyword(BookSearchKeyword searchKeyword) {
 
         return new Specification<Books>() {

@@ -1,4 +1,4 @@
-package com.example.app.api.exception;
+package com.example.app.util.exception;
 
 import com.example.app.util.model.EnumModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
