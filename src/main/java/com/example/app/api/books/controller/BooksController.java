@@ -1,8 +1,8 @@
 package com.example.app.api.books.controller;
 
-import com.example.app.api.books.domain.entity.Books;
-import com.example.app.api.books.dto.BookRegDto;
-import com.example.app.api.books.dto.BookResDto;
+import com.example.app.api.books.dto.BookRegist;
+import com.example.app.api.books.dto.BookResult;
+import com.example.app.api.books.dto.BookSearchKeyword;
 import com.example.app.api.books.service.BooksService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,25 +20,27 @@ public class BooksController {
 
     /**
      * @method 설명 : 도서 목록 조회요청
-     * @return
+     * @param :
+     *  bookName : 책 제목 like 조회
+     *  bookAuthor : 책 저자 like 조회
+     *  categoryId : 책 카테고리 where 조회
      * @throws Exception
      */
     @GetMapping(value = "")
-    public ResponseEntity<List<BookResDto>> getBooks() throws Exception {
+    public ResponseEntity<List<BookResult>> getBooks(BookSearchKeyword searchKeyword) throws Exception {
 
         return ResponseEntity
                 .ok()
-                .body(booksService.getBooks());
+                .body(booksService.getBooks(searchKeyword));
     }
 
     /**
      * @method 설명 : 도서 상세정보 조회요청
      * @param bookId
-     * @return
      * @throws Exception
      */
     @GetMapping(value = "/{bookId}")
-    public ResponseEntity<BookResDto> getBookDetail(
+    public ResponseEntity<BookResult> getBookDetail(
             @PathVariable Long bookId) throws Exception {
 
         return ResponseEntity
@@ -52,8 +54,8 @@ public class BooksController {
      * @throws Exception
      */
     @PostMapping(value = "")
-    public ResponseEntity<BookResDto> registBook(
-            @Valid @RequestBody BookRegDto regBook) throws Exception {
+    public ResponseEntity<BookResult> registBook(
+            @Valid @RequestBody BookRegist regBook) throws Exception {
 
         return ResponseEntity
                 .ok()
@@ -67,7 +69,7 @@ public class BooksController {
      * @throws Exception
      */
     @PutMapping(value = "{bookId}/category")
-    public ResponseEntity<BookResDto> modifyCategoryOfBook(
+    public ResponseEntity<BookResult> modifyCategoryOfBook(
             @PathVariable Long bookId,
             @RequestParam(name = "categoryId") Long categoryId) throws Exception {
 
@@ -83,7 +85,7 @@ public class BooksController {
      * @throws Exception
      */
     @PutMapping(value = "{bookId}/disabled")
-    public ResponseEntity<BookResDto> modifyDisableStatusOfBook(
+    public ResponseEntity<BookResult> modifyDisableStatusOfBook(
             @PathVariable Long bookId,
             @RequestParam(name = "disabled") String disabled) throws Exception {
 

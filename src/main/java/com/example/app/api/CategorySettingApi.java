@@ -2,14 +2,13 @@ package com.example.app.api;
 
 import com.example.app.api.books.domain.entity.Books;
 import com.example.app.api.books.domain.repository.BooksRepository;
-import com.example.app.api.categories.domain.entity.Categories;
-import com.example.app.api.categories.domain.repository.CategoriesRepository;
+import com.example.app.api.books.domain.entity.Categories;
+import com.example.app.api.books.domain.repository.CategoriesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

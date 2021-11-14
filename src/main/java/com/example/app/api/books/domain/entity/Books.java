@@ -1,6 +1,5 @@
 package com.example.app.api.books.domain.entity;
 
-import com.example.app.api.categories.domain.entity.Categories;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -45,8 +44,7 @@ public class Books {
     @ColumnDefault("'N'")
     private String disabled;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "FK_CATEGORY_BOOK"))
+    @ManyToOne
     private Categories category;
 
     @Builder

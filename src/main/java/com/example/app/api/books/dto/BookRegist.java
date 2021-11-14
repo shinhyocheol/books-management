@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BookRegDto {
+public class BookRegist {
 
     @NotBlank(message = "책 제목은 필수 데이터입니다.")
     private String name;

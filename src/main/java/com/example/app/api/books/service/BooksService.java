@@ -1,11 +1,13 @@
 package com.example.app.api.books.service;
 
 import com.example.app.api.books.domain.entity.Books;
-import com.example.app.api.categories.domain.entity.Categories;
+import com.example.app.api.books.domain.entity.Categories;
 import com.example.app.api.books.domain.repository.BooksRepository;
-import com.example.app.api.categories.domain.repository.CategoriesRepository;
-import com.example.app.api.books.dto.BookRegDto;
-import com.example.app.api.books.dto.BookResDto;
+import com.example.app.api.books.domain.repository.CategoriesRepository;
+import com.example.app.api.books.domain.repository.specification.BooksSpec;
+import com.example.app.api.books.dto.BookRegist;
+import com.example.app.api.books.dto.BookResult;
+import com.example.app.api.books.dto.BookSearchKeyword;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -25,28 +27,25 @@ public class BooksService {
 
     private final ModelMapper modelMapper;
 
-    @Transactional(readOnly = true)
-    public List<BookResDto> getBooks() {
+    public List<BookResult> getBooks(BookSearchKeyword searchKeyword) {
 
-        List<Books> books = booksRepository.findAll();
+        List<Books> books = booksRepository.findAll(BooksSpec.getPredicateWithKeyword(searchKeyword));
 
         return books.stream()
-                .map(entity -> modelMapper.map(entity, BookResDto.class))
+                .map(entity -> modelMapper.map(entity, BookResult.class))
                 .collect(Collectors.toList());
     }
 
-    @Transactional(readOnly = true)
-    public BookResDto getBookDetail(Long bookId) {
+    public BookResult getBookDetail(Long bookId) {
 
         Books book = booksRepository.findById(bookId)
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID를 가진 도서가 존재하지 않습니다."));
 
-        return modelMapper.map(book, BookResDto.class);
+        return modelMapper.map(book, BookResult.class);
 
     }
 
-    @Transactional
-    public BookResDto registBook(BookRegDto regBook) {
+    public BookResult registBook(BookRegist regBook) {
 
         Categories category = categoriesRepository.findById(regBook.getCategoryId())
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID를 가진 카테고리가 존재하지 않습니다."));
@@ -59,11 +58,12 @@ public class BooksService {
 
         Books book = booksRepository.save(build);
 
-        return modelMapper.map(book, BookResDto.class);
+        return modelMapper.map(book, BookResult.class);
     }
 
     @Transactional
-    public BookResDto modifyCategoryOfBook(Long bookId, Long categoryId) {
+    public BookResult modifyCategoryOfBook(Long bookId, Long categoryId) {
+
         Books book = booksRepository.findById(bookId)
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID를 가진 도서가 존재하지 않습니다."));
 
@@ -72,18 +72,18 @@ public class BooksService {
 
         book.modifyCategoryOfBook(category);
 
-        return modelMapper.map(book, BookResDto.class);
+        return modelMapper.map(book, BookResult.class);
     }
 
     @Transactional
-    public BookResDto modifyDisabledStatusOfBook(Long bookId, String disabled) {
+    public BookResult modifyDisabledStatusOfBook(Long bookId, String disabled) {
 
         Books book = booksRepository.findById(bookId)
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID를 가진 도서가 존재하지 않습니다."));
 
         book.modifyDisabledOfBook(disabled);
 
-        return modelMapper.map(book, BookResDto.class);
+        return modelMapper.map(book, BookResult.class);
     }
 
 }

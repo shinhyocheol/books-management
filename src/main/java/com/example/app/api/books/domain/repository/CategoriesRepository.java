@@ -1,6 +1,6 @@
-package com.example.app.api.categories.domain.repository;
+package com.example.app.api.books.domain.repository;
 
-import com.example.app.api.categories.domain.entity.Categories;
+import com.example.app.api.books.domain.entity.Categories;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoriesRepository extends JpaRepository<Categories, Long> {
