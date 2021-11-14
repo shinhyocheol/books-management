@@ -53,7 +53,11 @@
     
 
     ![스크린샷 2021-11-14 오후 10.26.04.png](https://github.com/shinhyocheol/books-management/blob/master/screenshot.png)
-
+    
+    * 참고
+        - 프로젝트가 실행되기 전 데이터베이스가 생성이됩니다.
+        - 프로젝트가 실행되고 난 후 https://www.notion.so/farmskincosmeticcom/24de5d14a23d4d09abe62410f1da3fbe 데이터를 기반으로 카테고리, 책 데이터가 각각 등록이 한번씩 실행됩니다.
+    
 ---
 
 ## API 문서(프로젝트 실행 후)
