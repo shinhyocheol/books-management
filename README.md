@@ -60,5 +60,5 @@
 
 - api docs(swagger2-ui) :  [{HOST}:{PORT}/api/swagger-ui.html](http://localhost:8080/api/swagger-ui.html)
 
-    ![스크린샷 2021-11-14 오후 10.26.04.png](https://github.com/shinhyocheol/books-management/blob/master/screenshot.png)
+    ![스크린샷 2021-11-14 오후 10.26.04.png](https://github.com/shinhyocheol/books-management/blob/master/screenshot2.png)
 
