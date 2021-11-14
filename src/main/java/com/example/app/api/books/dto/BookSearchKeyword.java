@@ -10,13 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BookSearchKeyword {
 
-    @ApiParam(value = "검색할 책 제목", required = false)
+    @ApiParam(value = "검색할 도서 제목", required = false, example = "너에게")
     private String bookName;
 
-    @ApiParam(value = "검색할 책의 지은이", required = false)
+    @ApiParam(value = "검색할 도서 지은이", required = false, example = "태영")
     private String bookAuthor;
 
-    @ApiParam(value = "검색할 책의 카테고리", required = false)
+    @ApiParam(value = "검색할 도서 카테고리", required = false, example = "1")
     private Long categoryId;
 
 }

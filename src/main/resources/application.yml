@@ -41,6 +41,11 @@ logging:
     com:
       example:
         app: debug
+    io:
+      swagger:
+        models:
+          parameters:
+            AbstractSerializableParameter: error
     org:
       hibernate:
         SQL: debug
