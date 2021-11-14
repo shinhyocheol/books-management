@@ -1,6 +1,6 @@
 # 도서관리 API
 
-## API  개발 환경
+## 개발 환경
 
 - **edit tool**: eclips
 - **language** : Java8
@@ -9,9 +9,8 @@
 - **build**: gradle7
 - **etc** : github, swagger2
 
----
 
-## API 프로젝트 실행
+## 프로젝트 실행
 
 ### 1. 프로젝트 소스 내려받기
 
