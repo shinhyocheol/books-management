@@ -1,12 +1,10 @@
-package com.example.app.util.exception;
+package com.example.app.exception;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class ErrorResponse {
 
     private String message;

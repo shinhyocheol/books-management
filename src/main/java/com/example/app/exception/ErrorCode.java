@@ -1,16 +1,13 @@
-package com.example.app.util.exception;
+package com.example.app.exception;
 
-import com.example.app.util.model.EnumModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Getter
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum ErrorCode implements EnumModel{
+public enum ErrorCode {
 
-    BAD_REQUEST_CODE(400,  "Bad Request"),
+    BAD_REQUEST(400,  "Bad Request"),
     NOT_FOUND(404, "Not Found"),
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 
@@ -23,13 +20,4 @@ public enum ErrorCode implements EnumModel{
         this.message = message;
     }
 
-    @Override
-    public int getKey() {
-        return this.status;
-    }
-
-    @Override
-    public String getValue() {
-        return this.message;
-    }
 }

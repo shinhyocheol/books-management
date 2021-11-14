@@ -1,4 +1,4 @@
-package com.example.app.util.exception;
+package com.example.app.exception;
 
 import javassist.NotFoundException;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,8 @@ public class ExceptionAdvice {
             UnsatisfiedServletRequestParameterException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorResponse> badRequestException(Exception e) throws Exception {
-        ErrorResponse response = ErrorResponse.of(ErrorCode.BAD_REQUEST_CODE);
+
+        ErrorResponse response = ErrorResponse.of(ErrorCode.BAD_REQUEST);
         response.setDetail(e.getMessage());
 
         e.printStackTrace();

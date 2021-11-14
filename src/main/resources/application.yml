@@ -1,3 +1,10 @@
+## Java
+javax:
+  persistence:
+    schema-generation:
+      scripts:
+        action: drop-and-create
+
 ## Spring Config
 spring:
   main:
@@ -11,7 +18,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       use-new-id-generator-mappings: false
     properties:
       hibernate:
@@ -24,7 +31,7 @@ server:
 
 ## Database config
 datasource:
-  jdbc-url: "jdbc:mysql://127.0.0.1:3306/test_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8"
+  jdbc-url: "jdbc:mysql://127.0.0.1:3306/store"
   username: "root"
   password: "1234"
 
