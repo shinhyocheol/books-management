@@ -45,14 +45,14 @@ public class BooksService {
 
     }
 
-    public BookResult registBook(BookRegist regBook) {
+    public BookResult registBook(BookRegist registBook) {
 
-        Categories category = categoriesRepository.findById(regBook.getCategoryId())
+        Categories category = categoriesRepository.findById(registBook.getCategoryId())
                 .orElseThrow(() -> new EntityNotFoundException("해당 ID를 가진 카테고리가 존재하지 않습니다."));
 
         Books build = Books.builder()
-                .name(regBook.getName())
-                .author(regBook.getAuthor())
+                .name(registBook.getName())
+                .author(registBook.getAuthor())
                 .category(category)
                 .build();
 

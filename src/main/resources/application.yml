@@ -27,7 +27,7 @@ spring:
 ## ContextPath Config
 server:
   servlet:
-    context-path: /api/v1
+    context-path: /api
 
 ## Database config
 datasource:
