@@ -52,7 +52,7 @@
     ```
     
 
-![스크린샷 2021-11-14 오후 10.26.04.png](https://github.com/shinhyocheol/books-management/blob/master/screenshot.png)
+    ![스크린샷 2021-11-14 오후 10.26.04.png](https://github.com/shinhyocheol/books-management/blob/master/screenshot.png)
 
 ---
 
